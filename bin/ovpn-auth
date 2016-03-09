@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+####################################################################################
+#
+# Description:
+#
+#
+#               NOTES:
+#
+# Author: David
+#
+#
+#
+####################################################################################
+
+#load all the libs and modules
+$LOAD_PATH << File.expand_path(File.dirname(__FILE__) + '/../lib')
+require 'ovpn.rb'
+include OvpnAuth
+
+##################
+#
+# Entry POINT ( main() )
+#
+#
+##################
+begin
+
+    #get tmp file arguement from command line
+    userNameAndPasswordFile = ARGV[0]
+
+    #get the user supplied credentails
+    userSuppliedCredentials = get_user_supplied_credentials(userNameAndPasswordFile)
+
+    # Validate the supplied credentials - if all good allow login
+    if validate_credentials(userSuppliedCredentials)
+        return 0
+
+    # Otherwise they mustn't be - throw an error
+    else
+        return 1
+    end
+
+
+#if we get here something broke badly!
+# break the authentication and throw an error
+rescue  => e
+
+    putsLog 'ERROR - Exception Thrown - Message: '+e.message
+    return 1
+
+end
