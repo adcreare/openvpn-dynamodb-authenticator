@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
     s.bindir         = 'bin'
     s.add_dependency('unix-crypt', '~> 1.0')
     s.add_dependency('aws-sdk','~> 2.0')
-    s.add_development_dependency('rake', '~> 0')
+    s.add_development_dependency('rake', '~> 9')
 end
