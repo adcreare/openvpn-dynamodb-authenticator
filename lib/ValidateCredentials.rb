@@ -13,15 +13,18 @@ module OvpnAuth
     #
     ##################
     def validate_credentials(structUserSuppliedCredentials)
-
-        puts structUserSuppliedCredentials.username
-
-        #get the stored password for that user
-        userStoredPassword = get_stored_credentials(structUserSuppliedCredentials.username)
-
         userPasswordandHashMatch = false
 
-        userPasswordandHashMatch = UnixCrypt.valid?(structUserSuppliedCredentials.password,userStoredPassword)
+
+            #putsLog 'This is the username from file:'+structUserSuppliedCredentials.username
+
+            #get the stored password for that user
+            userStoredPassword = get_stored_credentials(structUserSuppliedCredentials.username)
+
+            #putsLog 'This is from DB:'+userStoredPassword
+            putsLog 'validating user'
+
+            userPasswordandHashMatch = UnixCrypt.valid?(structUserSuppliedCredentials.password,userStoredPassword)
 
         return userPasswordandHashMatch
 

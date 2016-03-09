@@ -33,11 +33,11 @@ begin
 
     # Validate the supplied credentials - if all good allow login
     if validate_credentials(userSuppliedCredentials)
-        exit 0
+        logonSuccessful('For user: '+userSuppliedCredentials.username)
 
     # Otherwise they mustn't be - throw an error
     else
-        exit 1
+        logonFailed('For user: '+userSuppliedCredentials.username)
     end
 
 #if we get here something broke badly!
