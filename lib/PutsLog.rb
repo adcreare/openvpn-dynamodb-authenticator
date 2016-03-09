@@ -1,5 +1,5 @@
 
-module Onus
+module OvpnAuth
 
     ##################
     #
@@ -18,7 +18,7 @@ module Onus
 
        rescue => e
 
-          puts 'ERROR'
+          puts 'ERROR logging failed'
           puts 'Message: '+stringToWrite+' Exception:'+e.message
        end
 

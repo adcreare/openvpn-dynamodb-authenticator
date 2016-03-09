@@ -14,8 +14,10 @@ module OvpnAuth
     ##################
     def validate_credentials(structUserSuppliedCredentials)
 
+        puts structUserSuppliedCredentials.username
+
         #get the stored password for that user
-        userStoredPassword = get_credentials_dynamodb(structUserSuppliedCredentials.username)
+        userStoredPassword = get_stored_credentials(structUserSuppliedCredentials.username)
 
         userPasswordandHashMatch = false
 

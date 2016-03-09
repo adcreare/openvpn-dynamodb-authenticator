@@ -7,5 +7,7 @@ require 'ostruct'
 
 
 #standard loads
-require 'CompareCredentials.rb'
-require 'GetLoginCredentials.rb'
+require 'ValidateCredentials.rb'
+require 'PutsLog.rb'
+require 'GetUserSuppliedCredentials.rb'
+require 'GetStoredCredentials.rb'

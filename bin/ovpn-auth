@@ -14,7 +14,7 @@
 
 #load all the libs and modules
 $LOAD_PATH << File.expand_path(File.dirname(__FILE__) + '/../lib')
-require 'ovpn.rb'
+require 'ovpn-auth.rb'
 include OvpnAuth
 
 ##################
@@ -33,19 +33,16 @@ begin
 
     # Validate the supplied credentials - if all good allow login
     if validate_credentials(userSuppliedCredentials)
-        return 0
+        exit 0
 
     # Otherwise they mustn't be - throw an error
     else
-        return 1
+        exit 1
     end
-
 
 #if we get here something broke badly!
 # break the authentication and throw an error
 rescue  => e
-
     putsLog 'ERROR - Exception Thrown - Message: '+e.message
-    return 1
-
+    exit 1
 end

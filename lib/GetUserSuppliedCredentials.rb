@@ -25,8 +25,10 @@ module OvpnAuth
                 end
             end
 
+            putsLog arrayLinesFromFile.length
+
             #check that the array isn't later than 0 and 1 (ie 2 elements)
-            if arrayLinesFromFile.length > 1
+            if arrayLinesFromFile.length > 2
                 throw "Input seemed to contain more than 2 lines!"
             end
 
