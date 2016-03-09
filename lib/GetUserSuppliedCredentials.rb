@@ -21,7 +21,7 @@ module OvpnAuth
             #read each line in from the file and add into the array
             File.open(stringFilePath, "r") do |f|
                 f.each_line do |line|
-                    arrayLinesFromFile << line
+                    arrayLinesFromFile << line.strip
                 end
             end
 
