@@ -5,7 +5,7 @@ require 'aws-sdk'
 require 'unix_crypt'
 require 'ostruct'
 require 'json'
-
+require 'net/http'
 
 #standard loads
 require 'ValidateCredentials.rb'

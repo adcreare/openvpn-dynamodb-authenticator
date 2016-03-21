@@ -43,7 +43,7 @@ module OvpnAuth
 
         rescue
             logonFailed('Call to Get Stored Credentials in DynamoDB failed. Causes: User may not exist,
-             table may not exist,iam role may have insuffcient access')
+             table may not exist,iam role may have insuffcient access. The table schema could also be wrong')
         end
 
         return returnUserPassword
@@ -63,8 +63,12 @@ module OvpnAuth
 
 
         begin
-            curlLookup=`curl http://169.254.169.254/latest/dynamic/instance-identity/document`
-            hashOfLookupValues = JSON.parse(curlLookup)
+
+            url = 'http://169.254.169.254/latest/dynamic/instance-identity/document'
+            uri = URI(url)
+            response = Net::HTTP.get(uri)
+
+            hashOfLookupValues = JSON.parse(response)
             lookupRegion = hashOfLookupValues["region"]
 
         rescue
