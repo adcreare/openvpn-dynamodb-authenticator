@@ -3,7 +3,7 @@ $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |s|
     s.name           = 'openvpn-dynamodb-authenticator'
-    s.version        = '0.0.1'
+    s.version        = '0.0.2'
     s.platform       = Gem::Platform::RUBY
     s.authors        = ['David Taberner']
     s.email          = ['David.Taberner@reckon.com', 'David@commscentral.net']
