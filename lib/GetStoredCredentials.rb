@@ -19,7 +19,7 @@ module OvpnAuth
 
             # create a dynamodb client object
             client = Aws::DynamoDB::Client.new(
-                region: 'ap-southeast-2'
+                region: get_aws_region() #call function to get the region
             )
 
             # get the users password in dynamodb
@@ -50,8 +50,28 @@ module OvpnAuth
 
     end
 
-    #gets the aws region to make the call against based on the iam role
-    def get_location
+    ##################
+    #
+    # FUNCTION
+    # Input: none
+    #
+    # Return: String containing the region the ec2 instance is in for the dynamodb lookup
+    # Purpose: Used to workout which aws region this instance is in and then for for a dynamodb table that matches in that region
+    #
+    ##################
+    def get_aws_region
+
+
+        begin
+            curlLookup=`curl http://169.254.169.254/latest/dynamic/instance-identity/document`
+            hashOfLookupValues = JSON.parse(curlLookup)
+            lookupRegion = hashOfLookupValues["region"]
+
+        rescue
+            logonFailed('Unable to perform region lookup. Is this an EC2 instance? and does it have access to http://169.254.169.254')
+        end
+
+        return lookupRegion
 
     end
 

@@ -4,6 +4,7 @@
 require 'aws-sdk'
 require 'unix_crypt'
 require 'ostruct'
+require 'json'
 
 
 #standard loads
