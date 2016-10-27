@@ -30,7 +30,9 @@ To obtian this module see the releases page, download the gem and install using 
 ---
 #### Setup instance IAM role permissions to DynamoDB
 The openvpn server is going to require access to the DynamoDB table - this is best handled with an IAM instance role
+
 1. Assign your instance a role when you deploy it
+
 2. Add the following IAM policy to your instance role - Update **$$SetToYourRegion$** to match your aws region and **$YourAWSAccountID$** your AWS account number.
 
 ```json
@@ -87,4 +89,4 @@ sudo /etc/init.d/openvpn restart
 ---
 #### TODO
 1. Implement a configuration option for table name
-2. 
+2.
